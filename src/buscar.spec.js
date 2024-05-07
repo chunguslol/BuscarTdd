@@ -11,6 +11,9 @@ function buscarProyecto(nombre, proyectos){
             proyectosEncontrados.push(proyecto);
         }
     }
+    if (proyectosEncontrados.length === numeroCero) {
+        return "";
+    }
     return proyectosEncontrados.join(", ");
 }
 describe("buscarProyecto", () => {
@@ -45,6 +48,13 @@ describe("buscarProyecto", () => {
         proyectos.push("Nada4");
         proyectos.push("Proyecto2"); 
         expect(buscarProyecto("P", proyectos)).toEqual("Proyecto1, Papanoel, Proyecto2");
+    });
+    it("No sale nada al no econtrar un proyecto al buscar ", () => {
+        let proyectos = [];
+        proyectos.push("Proyecto1");
+        proyectos.push("Proyecto2");
+        proyectos.push("Proyecto3"); 
+        expect(buscarProyecto("Proyecto4", proyectos)).toEqual("");
     });
 
 });
