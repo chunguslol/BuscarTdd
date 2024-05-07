@@ -3,15 +3,15 @@ function buscarProyecto(nombre, proyectos) {
     if (proyectos.length === 0) {
         return "";
     }
-    let pe = [];
+    let proyectosEncontrados = [];
 
     for (const proyecto of proyectos) {
         if (proyecto === nombre) {
-            pe.push(proyecto);
+            proyectosEncontrados.push(proyecto);
         }
     }
 
-    return pe.join(", ");
+    return proyectosEncontrados.join(", ");
 }
 
 describe("buscarProyecto", () => {
