@@ -5,14 +5,14 @@ function buscarProyecto(nombre, proyectos){
         return "";
     }
     let proyectosEncontrados = [];
+    const nombreMinusculas = nombre.toLowerCase();
     for(const proyecto of proyectos){
-        if(proyecto.startsWith(nombre)){
+        if(proyecto.toLowerCase().startsWith(nombreMinusculas)){
             proyectosEncontrados.push(proyecto);
         }
     }
     return proyectosEncontrados.join(", ");
 }
-
 describe("buscarProyecto", () => {
     it("No se encuentra proyectos cuando no se tiene ninguno en la lista de proyectos", () => {
         let proyectos = [];
