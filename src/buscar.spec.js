@@ -1,8 +1,9 @@
 
 function buscarProyecto(nombre, proyectos){
     const numeroCero = 0;
+    const nada = "";
     if (proyectos.length === numeroCero){
-        return "";
+        return nada;
     }
     let proyectosEncontrados = [];
     const nombreMinusculas = nombre.toLowerCase();
@@ -12,7 +13,7 @@ function buscarProyecto(nombre, proyectos){
         }
     }
     if (proyectosEncontrados.length === numeroCero) {
-        return "";
+        return nada;
     }
     return proyectosEncontrados.join(", ");
 }
