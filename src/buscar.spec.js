@@ -1,15 +1,18 @@
 
-function buscarProyecto(nombre, proyectos){
-    if (proyectos.length === 0){
+function buscarProyecto(nombre, proyectos) {
+    if (proyectos.length === 0) {
         return "";
     }
-    for(const proyecto of proyectos){
-        if(proyecto === nombre){
-            return proyecto;
+    let pe = [];
+
+    for (const proyecto of proyectos) {
+        if (proyecto === nombre) {
+            pe.push(proyecto);
         }
     }
-}
 
+    return pe.join(", ");
+}
 
 describe("buscarProyecto", () => {
     it("No se encuentra proyectos cuando no se tiene ninguno en la lista de proyectos", () => {
@@ -28,6 +31,13 @@ describe("buscarProyecto", () => {
         proyectos.push("Proyecto3");
         expect(buscarProyecto("Proyecto2", proyectos)).toEqual("Proyecto2");
     });
-    
+    it("encuentra un proyecto cuando el mismo existe en una lista de varios proyectos", () => {
+        let proyectos = [];
+        proyectos.push("Proyecto1");
+        proyectos.push("Proyecto2");
+        proyectos.push("Proyecto3");
+        proyectos.push("Proyecto2"); 
+        expect(buscarProyecto("Proyecto2", proyectos)).toEqual("Proyecto2, Proyecto2");
+    });
 
 });
