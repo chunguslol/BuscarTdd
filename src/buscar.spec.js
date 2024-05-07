@@ -1,16 +1,15 @@
 
-function buscarProyecto(nombre, proyectos) {
-    if (proyectos.length === 0) {
+function buscarProyecto(nombre, proyectos){
+    const numeroCero = 0;
+    if (proyectos.length === numeroCero){
         return "";
     }
     let proyectosEncontrados = [];
-
-    for (const proyecto of proyectos) {
-        if (proyecto === nombre) {
+    for(const proyecto of proyectos){
+        if(proyecto.startsWith(nombre)){
             proyectosEncontrados.push(proyecto);
         }
     }
-
     return proyectosEncontrados.join(", ");
 }
 
@@ -38,6 +37,14 @@ describe("buscarProyecto", () => {
         proyectos.push("Proyecto3");
         proyectos.push("Proyecto2"); 
         expect(buscarProyecto("Proyecto2", proyectos)).toEqual("Proyecto2, Proyecto2");
+    });
+    it("Encuentra todas los proyectos similares con las primera/s letra/s de mi busqueda ", () => {
+        let proyectos = [];
+        proyectos.push("Proyecto1");
+        proyectos.push("Papanoel");
+        proyectos.push("Nada4");
+        proyectos.push("Proyecto2"); 
+        expect(buscarProyecto("P", proyectos)).toEqual("Proyecto1, Papanoel, Proyecto2");
     });
 
 });
